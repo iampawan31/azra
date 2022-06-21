@@ -1,24 +1,26 @@
 import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { collection, getDocs, limit, query, orderBy } from 'firebase/firestore'
-import {
-  AboutAzra,
-  Calendly,
-  FeatureSection,
-  Image,
-  ImageSlider,
-  PostSlider,
-  PricingAndPlans,
-  Services,
-  SwiperSection,
-  Testimonials,
-  WhatsAppButton,
-  WhyChoseUs,
-} from '../components'
+import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore'
+import dynamic from 'next/dynamic'
 import { db } from '../firebase-config'
 import ctaImage from '../public/images/home/home-cta.jpeg'
-import { TESTIMONIALS, POSTS } from '../utils/constants'
+import { POSTS, TESTIMONIALS } from '../utils/constants'
 import { featuredClients, featuredOurResults, whatWeOffer } from '../utils/data'
+
+const AboutAzra = dynamic(() => import('../components/home/AboutAzra'))
+const PostSlider = dynamic(() => import('../components/home/PostSlider'))
+const ImageSlider = dynamic(() => import('../components/home/ImageSlider'))
+const Testimonials = dynamic(() => import('../components/home/Testimonials'))
+const WhyChoseUs = dynamic(() => import('../components/home/WhyChoseUs'))
+const PricingAndPlans = dynamic(() =>
+  import('../components/home/PricingAndPlans')
+)
+const Calendly = dynamic(() => import('../components/Calendly'))
+const FeatureSection = dynamic(() => import('../components/FeatureSection'))
+const Image = dynamic(() => import('../components/Image'))
+const WhatsAppButton = dynamic(() => import('../components/WhatsAppButton'))
+const SwiperSection = dynamic(() => import('../components/SwiperSection'))
+const Services = dynamic(() => import('../components/Services/Services'))
 
 const Home = ({ testimonials, posts }) => {
   return (
@@ -75,7 +77,7 @@ const Home = ({ testimonials, posts }) => {
       {/* Pricing and Plans */}
       <PricingAndPlans />
 
-      {/* Testtimonials Section */}
+      {/* Testimonials Section */}
       <Testimonials testimonials={testimonials} />
 
       {/* Latest Posts Section */}
