@@ -102,7 +102,7 @@ const Home = () => {
       <WhyChoseUs />
 
       {/* Calendly Section */}
-      {/* <Calendly /> */}
+      <Calendly />
 
       {/* Our Results Speak - When They can, so can You ! */}
       <div className="bg-gray py-28">

@@ -9,11 +9,11 @@ const AuthLayout = ({ children }) => {
         <meta name="description" content="Azra Website" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Script
-        strategy="afterInteractive"
+      <script
+        defer
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
-      <Script id="google-analytics-tag" strategy="afterInteractive">
+      <script id="google-analytics-tag" defer>
         {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
@@ -22,7 +22,7 @@ const AuthLayout = ({ children }) => {
                     page_path: window.location.pathname,
                     });
                 `}
-      </Script>
+      </script>
 
       <div className="scroll-smooth min-h-screen h-full flex items-center justify-center">
         {children}

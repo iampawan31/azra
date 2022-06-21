@@ -16,11 +16,11 @@ const Layout = ({ children }) => {
         <meta name="description" content="Azra Website" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Script
-        strategy="afterInteractive"
+      <script
+        defer
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
-      <Script id="google-analytics-tag" strategy="afterInteractive">
+      <script id="google-analytics-tag" defer>
         {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
@@ -29,11 +29,8 @@ const Layout = ({ children }) => {
                     page_path: window.location.pathname,
                     });
                 `}
-      </Script>
-      {/* <Script
-        src="//code.tidio.co/d9gzmro8azj6easjo5fpeqxmror6mxmc.js"
-        strategy="afterInteractive"
-      /> */}
+      </script>
+      <script src="//code.tidio.co/d9gzmro8azj6easjo5fpeqxmror6mxmc.js" defer />
 
       <div className="scroll-smooth relative">
         <TopNavbar />
