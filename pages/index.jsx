@@ -2,6 +2,7 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 import { db } from '../firebase-config'
 import ctaImage from '../public/images/home/home-cta.jpeg'
 import { POSTS, TESTIMONIALS } from '../utils/constants'
@@ -22,7 +23,46 @@ const WhatsAppButton = dynamic(() => import('../components/WhatsAppButton'))
 const SwiperSection = dynamic(() => import('../components/SwiperSection'))
 const Services = dynamic(() => import('../components/Services/Services'))
 
-const Home = ({ testimonials, posts }) => {
+const Home = () => {
+  const [testimonials, setTestimonials] = useState([])
+  const [posts, setPosts] = useState([])
+
+  const getTestimonials = async () => {
+    const testimonialsRef = collection(db, TESTIMONIALS)
+    const q = query(testimonialsRef)
+    const querySnapshot = await getDocs(q)
+    let data = []
+    querySnapshot.forEach((doc) => {
+      data.push({
+        id: doc.id,
+        ...doc.data(),
+      })
+    })
+
+    setTestimonials(data)
+  }
+
+  const getPosts = async () => {
+    const latestPostsRef = collection(db, POSTS)
+    const qPosts = query(
+      latestPostsRef,
+      orderBy('publishedDate', 'desc'),
+      limit(10)
+    )
+
+    const queryPostsSnapshot = await getDocs(qPosts)
+    let data = []
+
+    queryPostsSnapshot.forEach((doc) => {
+      data.push({
+        id: doc.id,
+        ...doc.data(),
+      })
+    })
+
+    setPosts(data)
+  }
+
   return (
     <div className="h-full bg-white w-full">
       {/* Main Slider Section */}
@@ -78,7 +118,7 @@ const Home = ({ testimonials, posts }) => {
       <PricingAndPlans />
 
       {/* Testimonials Section */}
-      <Testimonials testimonials={testimonials} />
+      {testimonials && <Testimonials testimonials={testimonials} />}
 
       {/* Latest Posts Section */}
 
@@ -91,7 +131,7 @@ const Home = ({ testimonials, posts }) => {
             Top stories featured on Health & Medicine, Mind & Brain, and Living
             Well sections. Your source for the latest research news.
           </div>
-          <PostSlider posts={posts} />
+          {posts && <PostSlider posts={posts} />}
         </div>
       </div>
 
@@ -120,48 +160,6 @@ const Home = ({ testimonials, posts }) => {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
-
-  const testimonialsRef = collection(db, TESTIMONIALS)
-  const latestPostsRef = collection(db, POSTS)
-  const q = query(testimonialsRef)
-  const qPosts = query(
-    latestPostsRef,
-    orderBy('publishedDate', 'desc'),
-    limit(10)
-  )
-
-  const querySnapshot = await getDocs(q)
-  const queryPostsSnapshot = await getDocs(qPosts)
-  let testimonials = []
-  let posts = []
-  querySnapshot.forEach((doc) => {
-    testimonials.push({
-      id: doc.id,
-      ...doc.data(),
-    })
-  })
-
-  queryPostsSnapshot.forEach((doc) => {
-    posts.push({
-      id: doc.id,
-      ...doc.data(),
-    })
-  })
-
-  // Pass data to the page via props
-  return {
-    props: {
-      testimonials: JSON.parse(JSON.stringify(testimonials)),
-      posts: JSON.parse(JSON.stringify(posts)),
-    },
-  }
 }
 
 export default Home
