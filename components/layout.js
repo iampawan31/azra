@@ -30,10 +30,10 @@ const Layout = ({ children }) => {
                     });
                 `}
       </Script>
-      <Script
+      {/* <Script
         src="//code.tidio.co/d9gzmro8azj6easjo5fpeqxmror6mxmc.js"
-        strategy="lazyOnload"
-      />
+        strategy="afterInteractive"
+      /> */}
 
       <div className="scroll-smooth relative">
         <TopNavbar />
