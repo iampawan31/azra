@@ -13,7 +13,7 @@ const NImage = ({ src, alt, imageClass, ...props }) => {
       src={src}
       alt={alt}
       {...props}
-      priority
+      loading="lazy"
       className={`bg-gray-400 transition duration-1000 z-0 ${imageClass} ${
         isReady ? 'scale-100 bg-white blur-0' : 'scale-120 blur-2xl'
       }`}
