@@ -14,6 +14,11 @@ export const NAVBAR_LINKS = [
     match: true,
   },
   {
+    href: '/schedule-consultation',
+    name: 'Schedule Free Consultation',
+    match: false,
+  },
+  {
     href: '/blog',
     name: 'Blog',
     match: true,
