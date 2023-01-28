@@ -46,11 +46,11 @@ export const whatWeOffer = [
       'Get effective plans focusing on lactation, baby nourishment, post-pregnancy weight loss.',
   },
   {
-    title: 'Hypertension , Thyroid & Diabetes Nutrition',
+    title: 'Hypertension,Thyroid & Diabetes Nutrition',
     link: '/services/hypertension-thyroid-diabetes-nutrition',
     icon: 'fa-solid fa-person-walking',
     description:
-      'Complex lifestyle diseases such as hypertension, thyroid imbalance, and diabetes, can be managed with balanced diets. We understand such complex conditions and plan medically-sound diets for the same.',
+      'Complex lifestyle diseases such as hypertension, thyroid imbalance, diabetes, can be managed with balanced diets. We understand such complex conditions and plan medically-sound diets for the same.',
   },
   {
     title: 'Pre-Pregnancy Nutrition',
@@ -64,7 +64,7 @@ export const whatWeOffer = [
     link: '/services/weight-gain-nutrition',
     icon: 'fa-solid fa-weight-scale',
     description:
-      'Weight gain can be challenging but is not impossible. At Azra, our professionals can assist you in gaining healthy weight.',
+      'Weight gain can be challenging but is not impossible. At Azrah, our professionals can assist you in gaining healthy weight.',
   },
   {
     title: 'PCOS / PCOD Nutrition',

@@ -1,10 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
   return (
     <div className="bg-secondary text-gray">
       {/* Top Footer */}
@@ -24,11 +24,11 @@ const Footer = () => {
                 Services
               </a>
             </Link>
-            <Link href="/blog">
+            {/* <Link href="/blog">
               <a className="hover:border-b-2 border-primary transition cursor-pointer w-fit h-6">
                 Blog
               </a>
-            </Link>
+            </Link> */}
             <Link href="/client-reviews">
               <a className="hover:border-b-2 border-primary transition cursor-pointer w-fit h-6">
                 Client Reviews
@@ -56,12 +56,12 @@ const Footer = () => {
                 <span>+91-9899-1919-36</span>
               </a>
             </div>
-            <div>
+            {/* <div>
               <a href="mailto:info@azra.in">
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                 <span>info@azra.in</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -70,13 +70,13 @@ const Footer = () => {
         <div className="container mx-auto flex justify-center items-center h-full py-4">
           <div>
             <span>Copyright {currentYear} &#169;</span>
-            <span className="text-primary"> Azra.</span>
+            <span className="text-primary"> Azrah.</span>
             <span> All Rights Reserved.</span>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

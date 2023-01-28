@@ -1,5 +1,5 @@
-import { faLeaf } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   AboutAzra,
   FeatureSection,
@@ -12,9 +12,16 @@ import {
   Testimonials,
   WhatsAppButton,
   WhyChoseUs,
-} from '../components'
-import ctaImage from '../public/images/home/home-cta.jpeg'
-import { featuredClients, featuredOurResults, whatWeOffer } from '../utils/data'
+} from "../components";
+import EnquiryForm from "../components/EnquiryForm";
+import EnquiryFormNoBg from "../components/EnquiryFormNoBG";
+import { WhatWeDo } from "../components/home/WhatWeDo";
+import ctaImage from "../public/images/home/home-cta.jpeg";
+import {
+  featuredClients,
+  featuredOurResults,
+  whatWeOffer,
+} from "../utils/data";
 
 const Home = () => {
   return (
@@ -38,12 +45,15 @@ const Home = () => {
             We understand that you are special – and your body requirements are
             unique. We work to design unique diet plans specifically for:
           </div>
-          <Services services={whatWeOffer} />
+          {/* <Services services={whatWeOffer} /> */}
+          <WhatWeDo services={whatWeOffer}></WhatWeDo>
         </div>
       </div>
-
+      <div className="w-full flex justify-center ">
+        <EnquiryForm  />
+      </div>
       {/* Real Clients, Real Transformations Section */}
-      <div className="bg-white py-28">
+      <div className="bg-white py-20">
         <div className="container mx-auto">
           <div className="text-center font-title text-4xl mb-16">
             Real Clients, Real Transformations
@@ -80,7 +90,7 @@ const Home = () => {
       <Testimonials />
 
       {/* CTA section */}
-      <div className="relative h-72 lg:h-128 w-full">
+      <div className="relative h-[80vh] md:h-[100vh] lg:h-[120vh] w-full">
         <div className="absolute z-30 top-10 lg:top-28 left-5 lg:left-28">
           <FontAwesomeIcon
             icon={faLeaf}
@@ -92,8 +102,9 @@ const Home = () => {
           </div>
           <div className="mb-4">
             WhatsApp us or Chat with us - We respond immediately!
+          <EnquiryFormNoBg/>
           </div>
-          <WhatsAppButton />
+          {/* <WhatsAppButton /> */}
         </div>
         <Image
           src={ctaImage}
@@ -103,7 +114,7 @@ const Home = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
